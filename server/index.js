@@ -14,6 +14,13 @@ import postRoutes from "./routes/posts.js"
 import { register } from "./controllers/auth.js"
 import { createPost } from "./controllers/posts.js"
 import { verifyToken } from "./middleware/auth.js"
+import User from "./models/User.js"
+import Post from "./models/Post.js"
+
+/** Test data */
+/** @see line 68 */
+import { users, posts } from "./data/index.js"
+/**  */
 
 /** Config */
 const __filename = fileURLToPath(import.meta.url)
@@ -58,6 +65,10 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then(() => {
     app.listen(PORT, () => {
       console.log(`Connected Port: ${PORT}`)  
+      /** Manually inject test data */
+    //   User.insertMany(users)
+    //   Post.insertMany(posts)
+    //   console.log("Test users/posts created!")
     })
 }).catch(err => {
     console.log(err)
