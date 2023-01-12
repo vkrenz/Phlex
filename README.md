@@ -9,6 +9,15 @@ A full-stack web application built using the MERN stack (MongoDB, Express.js, Re
 - [React](https://reactjs.org/) - JavaScript library for building user interfaces
 - [MongoDB](https://www.mongodb.com/) - NoSQL document-oriented database
 
+## Features
+- User registration and login
+- CRUD functionality
+- Responsive design for mobile devices
+- Image upload and storage
+- User authorization and authentication 
+- Dark mode toggle
+- User likes & dislikes
+
 ## Visual Data Model
 
 ![Entity Relationship Diagram](./Entity_Relation.png)
