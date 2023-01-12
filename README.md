@@ -1,4 +1,4 @@
-Fullstack MERN web app using:
+Fullstack MERN web app creating using:
 `MongoDB`
 `Express.js`
 `React.js`
