@@ -20,4 +20,4 @@ A full-stack web application built using the MERN stack (MongoDB, Express.js, Re
 
 ## Visual Data Model
 
-![Entity Relationship Diagram](./Entity_Relation.png)
+![Entity Relationship Diagram](./Data_Model.png)
