@@ -9,6 +9,6 @@ A full-stack web application built using the MERN stack (MongoDB, Express.js, Re
 - [React](https://reactjs.org/) - JavaScript library for building user interfaces
 - [MongoDB](https://www.mongodb.com/) - NoSQL document-oriented database
 
-Entity Relationship Diagram:
+## Entity Relationship Diagram
 
 ![Entity Relationship Diagram](./Entity_Relation.png)
