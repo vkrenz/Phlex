@@ -66,6 +66,7 @@ mongoose.connect(process.env.MONGO_URL, {
     app.listen(PORT, () => {
       console.log(`Connected Port: ${PORT}`)  
       /** Manually inject test data */
+      /** @desc one-time use only */
     //   User.insertMany(users)
     //   Post.insertMany(posts)
     //   console.log("Test users/posts created!")
