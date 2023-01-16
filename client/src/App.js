@@ -1,8 +1,8 @@
 import {
-  BrowserRouter,
-  Navigate,
-  Routes,
-  Route
+  // React Router v6
+  // Navigate,
+  createBrowserRouter,
+  RouterProvider
 } from "react-router-dom"
 import HomePage from "scenes/homePage"
 import LoginPage from "scenes/loginPage"
@@ -13,27 +13,25 @@ import { CssBaseline, ThemeProvider } from "@mui/material"
 import { createTheme } from "@mui/material/styles"
 import { themeSettings } from "./theme"
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LoginPage />
+  }
+])
 
+function App() {
   const mode = useSelector((state) => state.mode)
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode])
-
   return (
     <div className="app">
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          {/* Reset CSS */}
-          <CssBaseline />
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/profile/:userId" element={<ProfilePage />} />
-          </Routes>
-        </ThemeProvider>
-      </BrowserRouter>
+      <ThemeProvider theme={theme}>
+        {/* Reset CSS */}
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </div>
   )
-  
 }
 
 export default App
