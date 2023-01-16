@@ -1,5 +1,5 @@
-const NavBar = () => {
-    return (<div>NavBar</div>)
+const ProfilePage = () => {
+    return <div>Profile Page</div>
 }
 
-export default NavBar
+export default ProfilePage
