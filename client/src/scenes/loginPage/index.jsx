@@ -15,7 +15,7 @@ const LoginPage = () => {
                 width="100%"
                 backgroundColor={theme.palette.background.alt}
                 p="1rem 6%"
-                text-align="center"
+                textAlign="center"
             >
                 <Typography
                     fontWeight="bold"
@@ -44,6 +44,7 @@ const LoginPage = () => {
                     {/* Description */}
                     Welcome to Sociopedia, the Social Media for Sociopaths!
                 </Typography>
+                <Form />
             </Box>
         </Box>
     )
