@@ -40,6 +40,7 @@ const LoginPage = () => {
                     sx={{
                         mb: "1.5rem"
                     }}
+                    textAlign="center"
                 >
                     {/* Description */}
                     Welcome to Sociopedia, the Social Media for Sociopaths!
