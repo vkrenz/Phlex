@@ -184,7 +184,7 @@ const Form = () => {
                                         acceptedFiles=".jpg,.jpeg,.png"
                                         multiple={false}
                                         onDrop={(acceptedFiles) =>
-                                            setFieldValue("picture", acceptedFiles[0])
+                                            setFieldValue("image", acceptedFiles[0])
                                         }
                                     >
                                         {({ getRootProps, getInputProps }) => (
