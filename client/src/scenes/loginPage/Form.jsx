@@ -55,7 +55,9 @@ const Form = () => {
     const isLogin = pageType === "login"
     const isRegister = pageType === "register"
     
-    const handleFormSubmit = async (values, onSubmitProps) => {}
+    const handleFormSubmit = async (values, onSubmitProps) => {
+        /** WIP */
+    }
 
     return (
         <Formik
@@ -74,7 +76,93 @@ const Form = () => {
                 resetForm
             }) => {
                 <form onSubmit={handleSubmit}>
-                    
+                    <Box
+                        display="grid"
+                        gap="30px"
+                        gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+                        sx={{
+                            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" }
+                        }}
+                    >
+                        { isRegister && (
+                            <>
+                                <TextField
+                                    label="First Name"
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    value={values.firstName}
+                                    name="firstName"
+                                    error={ Boolean(touched.firstName) && Boolean(errors.firstName) }
+                                    helperText={ touched.firstName && errors.firstName }
+                                    sx={{ gridColumn: "span 2" }}
+                                />
+                                <TextField
+                                    label="Last Name"
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    value={values.lastName}
+                                    name="lastName"
+                                    error={ Boolean(touched.lastName) && Boolean(errors.lastName) }
+                                    helperText={ touched.lastName && errors.lastName }
+                                    sx={{ gridColumn: "span 2" }}
+                                />
+                                <TextField
+                                    label="Location"
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    value={values.location}
+                                    name="location"
+                                    error={ Boolean(touched.location) && Boolean(errors.location) }
+                                    helperText={ touched.location && errors.location }
+                                    sx={{ gridColumn: "span 4" }}
+                                />
+                                <TextField
+                                    label="Occupation"
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    value={values.occupation}
+                                    name="occupation"
+                                    error={ Boolean(touched.occupation) && Boolean(errors.occupation) }
+                                    helperText={ touched.occupation && errors.occupation }
+                                    sx={{ gridColumn: "span 4" }}
+                                />
+                                <Box
+                                    gridColumn="span 4"
+                                    border={`1px solid ${palette.neutral.medium}`}
+                                    borderRadius="5px"
+                                    padding="1rem"
+                                >
+                                    <Dropzone
+                                        acceptedFiles=".jpg,.jpeg,.png"
+                                        multiple={false}
+                                        onDrop={(acceptedFiles) =>
+                                            setFieldValue("picture", acceptedFiles[0])
+                                        }
+                                    >
+                                        {({ getRootProps, getInputProps }) => (
+                                            <Box
+                                                {...getRootProps()}
+                                                border={`2px dashed ${palette.primary.main}`}
+                                                p="1rem"
+                                                sx={{ "&:hover": { cursor: "pointer" } }}
+                                            >
+                                                <input {...getInputProps()} />
+                                                {!values.picture ? (
+                                                    <p>Add Picture Here</p>
+                                                ) : (
+                                                    <FlexBetween>
+                                                        <Typography>
+                                                            {values.picture.name}
+                                                        </Typography>
+                                                    </FlexBetween>
+                                                )}
+                                            </Box>
+                                        )}
+                                    </Dropzone>
+                                </Box>
+                            </>
+                        ) }
+                    </Box>
                 </form>
             }}
         </Formik>
