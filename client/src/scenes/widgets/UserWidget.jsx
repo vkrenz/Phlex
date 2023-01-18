@@ -75,8 +75,10 @@ const UserWidget = ({ userId, picturePath }) => {
                                 </Typography>
                         </Typography>
                     </Box>
-                    <ManageAccountsOutlined />
                 </FlexBetween>
+                <ManageAccountsOutlined />
+            </FlexBetween>
+
 
                 <Divider />
 
@@ -95,6 +97,8 @@ const UserWidget = ({ userId, picturePath }) => {
                         </Typography>
                     </Box>
                 </Box>
+
+                <Divider />
 
                 {/** Third Row */}
                 <Box p="1rem 0">
@@ -115,6 +119,8 @@ const UserWidget = ({ userId, picturePath }) => {
                         </Typography>
                     </FlexBetween>
                 </Box>
+
+                <Divider />
 
                 {/** Fourth Row */}
                 <Box p="1rem 0">
@@ -152,7 +158,6 @@ const UserWidget = ({ userId, picturePath }) => {
                         <EditOutlined sx={{ color: main }} />
                     </FlexBetween>
                 </Box>
-            </FlexBetween>
         </WidgetWrapper>
     )
 }
