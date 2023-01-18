@@ -1,7 +1,7 @@
 import {
   // React Router v6
-  // Navigate,
   createBrowserRouter,
+  Navigate,
   RouterProvider
 } from "react-router-dom"
 import HomePage from "scenes/homePage"
@@ -13,24 +13,24 @@ import { CssBaseline, ThemeProvider } from "@mui/material"
 import { createTheme } from "@mui/material/styles"
 import { themeSettings } from "./theme"
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LoginPage />
-  },
-  {
-    path: "/home",
-    element: <HomePage />
-  },
-  {
-    path: "/profile/:userId",
-    element: <ProfilePage />
-  }
-])
-
 function App() {
   const mode = useSelector((state) => state.mode)
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode])
+  const isAuth = Boolean(useSelector((state) => state.token))
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LoginPage />
+    },
+    {
+      path: "/home",
+      element: isAuth ? <HomePage /> : <Navigate to="/" />
+    },
+    {
+      path: "/profile/:userId",
+      element: isAuth ? <ProfilePage /> : <Navigate to="/" />
+    }
+  ])
   return (
     <div className="app">
       <ThemeProvider theme={theme}>
