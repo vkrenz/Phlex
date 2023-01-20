@@ -13,7 +13,7 @@ import {
 import {
     Search,
     Message,
-    DarkMode,
+    NightsStayOutlined,
     LightMode,
     Notifications,
     Help,
@@ -77,7 +77,7 @@ const Navbar = () => {
                 <FlexBetween gap="2rem">
                     <IconButton onClick={() => dispatch(setMode(/** Change state */))}>
                         {theme.palette.mode === "dark" ? (
-                            <DarkMode sx={{ fontSize: "25px " }} />
+                            <NightsStayOutlined sx={{ fontSize: "25px " }} />
                         ) : (
                             <LightMode sx={{ color: dark, fontSize: "25px" }} />
                         )}
@@ -158,7 +158,7 @@ const Navbar = () => {
                             sx={{ fontSize: "25px" }}
                         >
                             {theme.palette.mode === "dark" ? (
-                                <DarkMode sx={{ fontSize: "25px " }} />
+                                <NightsStayOutlined sx={{ fontSize: "25px " }} />
                             ) : (
                                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
                             )}

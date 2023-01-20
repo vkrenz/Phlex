@@ -202,6 +202,7 @@ const Form = () => {
                                                         <Typography>
                                                             {values.picture.name}
                                                         </Typography>
+                                                        <EditOutlinedIcon />
                                                     </FlexBetween>
                                                 )}
                                             </Box>

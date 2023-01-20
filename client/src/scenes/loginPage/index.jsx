@@ -2,12 +2,22 @@ import {
     Box, 
     Typography, 
     useTheme, 
-    useMediaQuery 
+    useMediaQuery,
+    IconButton,
 } from "@mui/material"
+import {
+    NightsStayOutlined,
+    LightMode
+} from "@mui/icons-material"
+import { useDispatch } from "react-redux"
+import { setMode } from "state"
 import Form from "./Form"
+import FlexBetween from "components/FlexBetween"
 
 const LoginPage = () => {
     const theme = useTheme()
+    const dark = theme.palette.neutral.dark
+    const dispatch = useDispatch()
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px")
     return (
         <Box>
@@ -17,14 +27,31 @@ const LoginPage = () => {
                 p="1rem 6%"
                 textAlign="center"
             >
-                <Typography
-                    fontWeight="bold"
-                    fontSize="32px"
-                    color="primary"
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="space-between"
                 >
-                    {/* Logo */}
-                    Sociopedia
-                </Typography>          
+                    <Typography
+                        fontWeight="bold"
+                        fontSize="32px"
+                        color="primary"
+                    >
+                        {/* Logo */}
+                        Sociopedia
+                    </Typography> 
+                    <IconButton
+                        onClick={() => dispatch(setMode(/** Change state */))}
+                        sx={{ fontSize: "25px" }}
+                        alignSelf="flex-end"
+                    >
+                        {theme.palette.mode === "dark" ? (
+                            <NightsStayOutlined sx={{ fontSize: "25px " }} />
+                        ) : (
+                            <LightMode sx={{ color: dark, fontSize: "25px" }} />
+                        )}
+                    </IconButton>         
+                </Box>
             </Box>
             {/* Form Box */}
             <Box

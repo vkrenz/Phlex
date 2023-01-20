@@ -3,6 +3,7 @@ import {
     EditOutlined,
     LocationOnOutlined,
     WorkOutlineOutlined,
+    // AddOutlined
 } from "@mui/icons-material"
 import { Box, Typography, Divider, useTheme  } from "@mui/material"
 import UserImage from "components/UserImage"
@@ -124,8 +125,9 @@ const UserWidget = ({ userId, picturePath }) => {
 
                 {/** Fourth Row */}
                 <Box p="1rem 0">
-                    <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
+                    <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem" display="flex" alignItems="center">
                         Social Profiles
+                        {/* <AddOutlined sx={{ ml: "0.5rem", fontSize: "1.5rem" }} /> */}
                     </Typography>
 
                     <FlexBetween gap="1rem" mb="0.5rem">
@@ -136,7 +138,7 @@ const UserWidget = ({ userId, picturePath }) => {
                                     Twitter
                                 </Typography>
                                 <Typography color={medium}>
-                                    Social Network
+                                    @vkrenz
                                 </Typography>
                             </Box>
                         </FlexBetween>
@@ -151,7 +153,7 @@ const UserWidget = ({ userId, picturePath }) => {
                                     Linkedin
                                 </Typography>
                                 <Typography color={medium}>
-                                    Network Platform
+                                    in/vkrenz
                                 </Typography>
                             </Box>
                         </FlexBetween>
