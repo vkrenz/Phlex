@@ -27,9 +27,9 @@ import { setPosts } from "state"
 
 const MyPostWidget = ({ picturePath }) => {
     const dispatch = useDispatch()
-    const {isImage, setIsImage} = useState(false)
-    const {image, setImage} = useState(null)
-    const {post, setPost} = useState("")
+    const [isImage, setIsImage] = useState(false)
+    const [image, setImage] = useState(null)
+    const [post, setPost] = useState("")
     const { palette } = useTheme()
     const { _id } = useSelector((state) => state.user)
     const token = useSelector((state) => state.token)
@@ -112,7 +112,7 @@ const MyPostWidget = ({ picturePath }) => {
                                 {image && (
                                     <IconButton
                                         onClick={() => setImage(null)}
-                                        sx={{ width: "15%" }}
+                                        sx={{ ml: "1rem", p: "1rem" }}
                                     >
                                         <DeleteOutlined />
                                     </IconButton>
@@ -153,23 +153,32 @@ const MyPostWidget = ({ picturePath }) => {
                         </FlexBetween>
 
                         <FlexBetween gap="0.25rem">
-                            <GifBoxOutlined sx={{ color: mediumMain }} />
+                            <MicOutlined sx={{ color: mediumMain }} />
                             <Typography color={mediumMain}>
-                                Clip
-                            </Typography>
-                        </FlexBetween>
-
-                        <FlexBetween gap="0.25rem">
-                            <GifBoxOutlined sx={{ color: mediumMain }} />
-                            <Typography color={mediumMain}>
-                                Clip
+                                Audio
                             </Typography>
                         </FlexBetween>
                     </>
-                ) : <></>}
+                ) : (
+                    <FlexBetween>
+                        <MoreHorizOutlined sx={{ color: mediumMain }} />
+                    </FlexBetween>
+                )}
+
+                <Button
+                    disabled={!post}
+                    onClick={handlePost}
+                    sx={{
+                        "&:disabled": { backgroundColor: palette.neutral.light },
+                        color: palette.background.alt,
+                        backgroundColor: palette.primary.main,
+                        borderRadius: "3rem"
+                    }}
+                >
+                    POST
+                </Button>
 
             </FlexBetween>
-
         </WidgetWrapper>
     )
 }
