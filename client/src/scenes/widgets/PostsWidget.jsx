@@ -1,10 +1,12 @@
-import { useEffect } from "react"
+import { Typography } from "@mui/material"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setPosts } from "state"
 import PostWidget from "./PostWidget"
 
 const PostsWidget = ({ userId, isProfile = false }) => {
     const dispatch = useDispatch()
+    const [reversedPostsArr, setReversedPostsArr] = useState([])
     const posts = useSelector((state) => state.posts)
     const token = useSelector((state) => state.token)
 
@@ -16,11 +18,15 @@ const PostsWidget = ({ userId, isProfile = false }) => {
         })
         const data = await response.json()
         dispatch(setPosts({ posts: data }))
+
+        /** Create a shallow copy of posts and reverse it */
+        const reversedPosts = posts.slice().reverse()
+        setReversedPostsArr(reversedPosts)
     }
 
     /** Get ONLY THE SPECIFIC USER'S posts */
     const getUserPosts = async () => {
-        const response = await fetch(`http://localhost:3001/posts/${userId}`, {
+        const response = await fetch(`http://localhost:3001/posts/${userId}/posts`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}`}
         })
@@ -37,9 +43,21 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    if(!posts) {
+        /** TODO: Add <LoadingSpinner /> */
+        return (
+            <Typography
+                mt="1rem"
+                textAlign="center"
+            >
+                Loading Posts...
+            </Typography>
+        )
+    }
+
     return (
         <>
-            {posts.map(
+            {reversedPostsArr.map(
                 ({
                     _id,
                     userId,
@@ -47,6 +65,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
                     lastName,
                     description,
                     location,
+                    occupation,
                     picturePath,
                     userPicturePath,
                     likes,
@@ -55,10 +74,11 @@ const PostsWidget = ({ userId, isProfile = false }) => {
                     <PostWidget
                         key={_id}
                         postId={_id}
-                        userId={userId}
+                        postUserId={userId}
                         name={`${firstName} ${lastName}`}
                         description={description}
                         location={location}
+                        occupation={occupation}
                         picturePath={picturePath}
                         userPicturePath={userPicturePath}
                         likes={likes}

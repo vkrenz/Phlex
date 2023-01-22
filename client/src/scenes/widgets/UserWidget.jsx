@@ -15,12 +15,14 @@ import { useNavigate } from "react-router-dom"
 
 const UserWidget = ({ userId, picturePath }) => {
     const [user, setUser] = useState(null)
+    const [posts, setPosts] = useState([])
     const { palette } = useTheme()
     const navigate = useNavigate()
     const token = useSelector((state) => state.token)
     const dark = palette.neutral.dark
     const medium = palette.neutral.medium
     const main = palette.neutral.main
+
     const getUser = async () => {
         const response = await fetch(`http://localhost:3001/users/${userId}`,
             {
@@ -31,8 +33,22 @@ const UserWidget = ({ userId, picturePath }) => {
         setUser(data)
     }
 
+    /** Get ONLY THE SPECIFIC USER'S posts */
+    const getPosts = async () => {
+        const response = await fetch(`http://localhost:3001/posts/${userId}/posts`, {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}`}
+        })
+        const data = await response.json()
+        if(data) {
+            setPosts(data)
+        }
+    }
+    
     useEffect(() => {
         getUser()
+        getPosts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (!user) {
@@ -50,7 +66,7 @@ const UserWidget = ({ userId, picturePath }) => {
     } = user
 
     return (
-        <WidgetWrapper>
+        <WidgetWrapper sx={{ position: "sticky", top: "3rem" }}>
             {/** First Row */}
             <FlexBetween
                 gap="0.5rem"
@@ -72,7 +88,7 @@ const UserWidget = ({ userId, picturePath }) => {
                             }}>
                                 {firstName} {lastName}
                                 <Typography color={medium}>
-                                    {friends.length} friends
+                                    {friends.length} friends  |  {posts.length} posts
                                 </Typography>
                         </Typography>
                     </Box>
