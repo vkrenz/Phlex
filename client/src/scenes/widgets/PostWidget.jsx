@@ -11,7 +11,8 @@ import {
     Divider,
     IconButton,
     Typography,
-    useTheme
+    useTheme,
+    TextField
 } from "@mui/material"
 import FlexBetween from "components/FlexBetween"
 import Friend from "components/Friend"
@@ -20,6 +21,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setPost, setPosts } from "state"
 import { useNavigate } from "react-router-dom"
+import UserImage from "components/UserImage"
 
 const PostWidget = ({
     postId,
@@ -131,7 +133,6 @@ const PostWidget = ({
                             sx={{
                                 borderRadius: "0.5rem"
                             }}
-                            {...comments.length === 0 ? "disabled" : ""}
                         >
                             <ChatBubbleOutlineOutlined />
                             <Typography ml="1rem">
@@ -154,38 +155,54 @@ const PostWidget = ({
                     </IconButton>
                 </Box>
            </FlexBetween>
-           {isComments && comments.length > 0 && (
-            <Box mt="0.5rem">
-                <Divider sx={{ mt: "1rem", mb: "1rem" }} />
-                {comments.map((comment, i) => (
-                    <Box key={`${name}-${i}`}>
-                        {i === comments.length ? null : (
-                            <Typography sx={{ color: main, m: "0.5rem 0", ml: "1rem", p: "0.75rem 0" }}>
-                                <Box display="flex" alignItems="center">
-                                    <Box
-                                        backgroundColor={"DimGray"}
-                                        padding="0.5rem 0.75rem"
-                                        borderRadius="1rem"
-                                    >
-                                        {comment}
-                                    </Box>
-                                    <IconButton sx={{ ml: "0.5rem" }}>
-                                        <MoreHorizOutlined sx={{ fontSize: "medium", color: "DimGray" }} />
-                                    </IconButton>
-                                </Box>
-                                <Box display="flex" gap="1rem" ml="0.75rem" mt="0.2rem">
-                                    <Typography fontSize="0.75rem" sx={{ "&:hover": { cursor: "pointer", color: primary } }}>
-                                        Like
-                                    </Typography>
-                                    <Typography fontSize="0.75rem" sx={{ "&:hover": { cursor: "pointer", color: primary } }}>
-                                        Reply
-                                    </Typography>
-                                </Box>
-                            </Typography>
-                        )}
+           {isComments && (
+                <Box>
+                    <Divider sx={{ m: "1rem 0" }} />
+                    <Box display="flex" alignItems="center">
+                        <UserImage image={user.picturePath}/>
+                        <TextField
+                            label={`${user.firstName}, write a comment...`}
+                            variant="filled"
+                            fullWidth
+                            sx={{
+                                ml: "1rem"
+                            }}
+                        />
                     </Box>
-                ))}
-            </Box>
+                </Box>
+           )}
+           {isComments && comments.length > 0 && (
+                <Box mt="0.5rem">
+                    <Divider sx={{ m: "1rem 0" }} />
+                    {comments.map((comment, i) => (
+                        <Box key={`${name}-${i}`}>
+                            {i === comments.length ? null : (
+                                <Typography sx={{ color: main, m: "0.5rem 0", ml: "1rem", p: "0.75rem 0" }}>
+                                    <Box display="flex" alignItems="center">
+                                        <Box
+                                            backgroundColor={"DimGray"}
+                                            padding="0.5rem 0.75rem"
+                                            borderRadius="1rem"
+                                        >
+                                            {comment}
+                                        </Box>
+                                        <IconButton sx={{ ml: "0.5rem" }}>
+                                            <MoreHorizOutlined sx={{ fontSize: "medium", color: "DimGray" }} />
+                                        </IconButton>
+                                    </Box>
+                                    <Box display="flex" gap="1rem" ml="0.75rem" mt="0.2rem">
+                                        <Typography fontSize="0.75rem" sx={{ "&:hover": { cursor: "pointer", color: primary } }}>
+                                            Like
+                                        </Typography>
+                                        <Typography fontSize="0.75rem" sx={{ "&:hover": { cursor: "pointer", color: primary } }}>
+                                            Reply
+                                        </Typography>
+                                    </Box>
+                                </Typography>
+                            )}
+                        </Box>
+                    ))}
+                </Box>
            )}
         </WidgetWrapper>
     )

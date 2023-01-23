@@ -2,7 +2,6 @@ import {
     EditOutlined,
     SportsEsportsOutlined,
     GroupOutlined,
-    OndemandVideoOutlined,
     AppsOutlined,
     MoreHorizOutlined
 } from "@mui/icons-material"
@@ -28,12 +27,13 @@ const LinksWidget = () => {
                 <MoreHorizOutlined />
             </FlexBetween>
             <Divider />
-            <FlexBetween
+            <Box
                 mt="1rem"
                 gap="0.5rem"
                 pb="1.1rem"
+                display="flex"
                 flexDirection="column"
-                alignItems="flex-end"
+                justifyContent="flex-start"
             >
                 <Box display="flex" alignItems="center" gap="0.5rem">
                     <IconButton>
@@ -51,7 +51,16 @@ const LinksWidget = () => {
                         Groups
                     </Typography>
                 </Box>
-            </FlexBetween>
+                <Divider />
+            </Box>
+            <Box display="flex" alignItems="center" gap="0.5rem">
+                <IconButton>
+                    <AppsOutlined />
+                </IconButton>
+                <Typography>
+                    See All
+                </Typography>
+            </Box>
         </WidgetWrapper>
     )
 }
