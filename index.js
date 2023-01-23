@@ -59,18 +59,22 @@ app.use("/posts", postRoutes)
 /** Mongoose */
 const PORT = process.env.PORT || 3001
 mongoose.set('strictQuery', true) /** Suppress DeprecationWarning */
-mongoose.connect("mongodb+srv://dbVkrenzel:QnzXuxUfGkRec92j@senecaweb.53svswz.mongodb.net/?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => {
-    app.listen(PORT, () => {
-      console.log(`Connected Port: ${PORT}`)  
-      /** Manually inject test data */
-      /** @desc one-time use only */
-    //   User.insertMany(users)
-    //   Post.insertMany(posts)
-    //   console.log("Test users/posts created!")
+try {
+    mongoose.connect("mongodb+srv://dbVkrenzel:QnzXuxUfGkRec92j@senecaweb.53svswz.mongodb.net/?retryWrites=true&w=majority", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }).then(() => {
+        app.listen(PORT, () => {
+          console.log(`Connected Port: ${PORT}`)  
+          /** Manually inject test data */
+          /** @desc one-time use only */
+        //   User.insertMany(users)
+        //   Post.insertMany(posts)
+        //   console.log("Test users/posts created!")
+        })
+    }).catch(err => {
+        console.log(err)
     })
-}).catch(err => {
-    console.log(err)
-})
+} catch (err) {
+    console.error(err)
+}
