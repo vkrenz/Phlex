@@ -57,7 +57,7 @@ app.use("/users", userRoutes)
 app.use("/posts", postRoutes)
 
 /** Mongoose */
-const PORT = process.env.PORT || 6001
+const PORT = process.env.PORT || 3001
 mongoose.set('strictQuery', true) /** Suppress DeprecationWarning */
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
