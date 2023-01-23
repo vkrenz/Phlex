@@ -49,7 +49,7 @@ const UserWidget = ({ userId, picturePath }) => {
         getUser()
         getPosts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [posts])
 
     if (!user) {
         return null

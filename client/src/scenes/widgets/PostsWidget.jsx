@@ -6,7 +6,7 @@ import PostWidget from "./PostWidget"
 
 const PostsWidget = ({ userId, isProfile = false }) => {
     const dispatch = useDispatch()
-    const [reversedPostsArr, setReversedPostsArr] = useState([])
+    // const [reversedPostsArr, setReversedPostsArr] = useState([])
     const posts = useSelector((state) => state.posts)
     const token = useSelector((state) => state.token)
 
@@ -17,11 +17,11 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             headers: { Authorization: `Bearer ${token}`}
         })
         const data = await response.json()
-        dispatch(setPosts({ posts: data }))
+        dispatch(setPosts({ posts: data.reverse() }))
 
         /** Create a shallow copy of posts and reverse it */
-        const reversedPosts = posts.slice().reverse()
-        setReversedPostsArr(reversedPosts)
+        // const reversedPosts = posts.slice().reverse()
+        // setReversedPostsArr(reversedPosts)
     }
 
     /** Get ONLY THE SPECIFIC USER'S posts */
@@ -55,9 +55,11 @@ const PostsWidget = ({ userId, isProfile = false }) => {
         )
     }
 
+    // console.log(reversedPostsArr.userId)
+
     return (
         <>
-            {reversedPostsArr.map(
+            {posts.map(
                 ({
                     _id,
                     userId,

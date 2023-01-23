@@ -21,7 +21,7 @@ import Dropzone from "react-dropzone"
 import FlexBetween from "components/FlexBetween"
 import UserImage from "components/UserImage"
 import WidgetWrapper from "components/WidgetWrapper"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setPosts } from "state"
 
@@ -37,8 +37,7 @@ const MyPostWidget = ({ picturePath }) => {
     const mediumMain = palette.neutral.mediumMain
     const medium = palette.neutral.medium
 
-    const handlePost = async (e) => {
-        e.preventDefault()
+    const handlePost = async () => {
         const formData = new FormData()
         formData.append("userId", _id)
         formData.append("description", post)
@@ -54,19 +53,13 @@ const MyPostWidget = ({ picturePath }) => {
                 body: formData
             })
             const posts = await response.json()
-            dispatch(setPosts({ posts }))
+            dispatch(setPosts({ posts: posts.reverse() }))
             setImage(null)
             setPost("")
         } catch(err) {
             console.error(err)
         }
     }
-
-    useEffect(() => {
-        handlePost()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
 
     return (
         <WidgetWrapper>

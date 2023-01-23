@@ -19,7 +19,7 @@ import Friend from "components/Friend"
 import WidgetWrapper from "components/WidgetWrapper"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setPost, setPosts } from "state"
+import { setPost } from "state"
 import { useNavigate } from "react-router-dom"
 import UserImage from "components/UserImage"
 
@@ -44,7 +44,6 @@ const PostWidget = ({
     const { palette } = useTheme()
     const main = palette.neutral.main
     const primary = palette.primary.main
-    const posts = useSelector((state) => state.posts)
 
     const patchLike = async () => {
         const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
@@ -59,15 +58,16 @@ const PostWidget = ({
         dispatch(setPost({ post: updatedPost }))
     }
 
-    const handleDelete = async (e) => {
-        e.preventDefault()
+    const handleDelete = async () => {
         try {
             await fetch(`http://localhost:3001/posts/${postId}`, {
                 method: "DELETE",
-                headers: {Authorization: `Bearer ${token}`}
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
             })
-            dispatch(setPosts({ posts: posts.filter(post => post.postId !== postId)}))
-            navigate(0)
+            navigate("/home")
         } catch (err) {
             console.error(err)
         }
@@ -124,7 +124,15 @@ const PostWidget = ({
                             )}
                         </IconButton>
                         <Typography>
-                            {likeCount} {likeCount > 1 || likeCount === 0 ? "likes" : "like"}
+                            {isLiked && likeCount ? (
+                                <>
+                                    {`You and ${likeCount - 1} others`}
+                                </>
+                            ) : (
+                                <>
+                                    {likeCount} {likeCount > 1 || likeCount === 0 ? "likes" : "like"}
+                                </>
+                            )}
                         </Typography>
                     </FlexBetween>
                     <FlexBetween gap="0.3rem">
@@ -144,7 +152,7 @@ const PostWidget = ({
                 <Box>
                     {postUserId === user._id && (
                         <IconButton
-                            onClick={handleDelete()}
+                            onClick={handleDelete}
                             sx={{ "&:hover": { color: "warning" } }}
                         >
                             <DeleteOutlined />

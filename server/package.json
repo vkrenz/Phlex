@@ -19,7 +19,7 @@
   "type": "module",
   "devDependencies": {},
   "scripts": {
-    "test": "nodemon index.js"
+    "test": "nodemon server.js"
   },
   "keywords": [],
   "author": "Victor Krenzel",
