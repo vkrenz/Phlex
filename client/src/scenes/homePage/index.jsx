@@ -4,6 +4,7 @@ import Navbar from "scenes/navbar"
 import UserWidget from "scenes/widgets/UserWidget"
 import MyPostWidget from "scenes/widgets/MyPostWidget"
 import PostsWidget from "scenes/widgets/PostsWidget"
+import LinksWidget from "scenes/widgets/LinksWidget"
 
 const HomePage = () => {
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)")
@@ -19,7 +20,10 @@ const HomePage = () => {
                 justifyContent="space-between"
             >
                 <Box flexBasis={isNonMobileScreens ? "26%" : "undefined"}>
-                    <UserWidget userId={_id} picturePath={picturePath} />  
+                    <Box sx={{ position: "sticky", top: "3rem" }}>
+                        <UserWidget userId={_id} picturePath={picturePath} />
+                        <LinksWidget />
+                    </Box>
                 </Box>
                 <Box 
                     flexBasis={isNonMobileScreens ? "42%" : "undefined"}

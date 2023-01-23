@@ -1,4 +1,4 @@
-# Scociopedia
+# Phlex
 
 A full-stack web application built using the MERN stack (MongoDB, Express.js, React, and Node.js).
 

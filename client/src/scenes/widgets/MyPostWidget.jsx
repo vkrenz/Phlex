@@ -24,11 +24,9 @@ import WidgetWrapper from "components/WidgetWrapper"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setPosts } from "state"
-import { useNavigate } from "react-router-dom"
 
 const MyPostWidget = ({ picturePath }) => {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const [isImage, setIsImage] = useState(false)
     const [image, setImage] = useState(null)
     const [post, setPost] = useState("")

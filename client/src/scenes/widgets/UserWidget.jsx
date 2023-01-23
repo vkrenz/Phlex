@@ -16,9 +16,9 @@ import { useNavigate } from "react-router-dom"
 const UserWidget = ({ userId, picturePath }) => {
     const [user, setUser] = useState(null)
     const [posts, setPosts] = useState([])
-    const { palette } = useTheme()
     const navigate = useNavigate()
     const token = useSelector((state) => state.token)
+    const { palette } = useTheme()
     const dark = palette.neutral.dark
     const medium = palette.neutral.medium
     const main = palette.neutral.main
@@ -66,7 +66,7 @@ const UserWidget = ({ userId, picturePath }) => {
     } = user
 
     return (
-        <WidgetWrapper sx={{ position: "sticky", top: "3rem" }}>
+        <WidgetWrapper>
             {/** First Row */}
             <FlexBetween
                 gap="0.5rem"
@@ -88,7 +88,7 @@ const UserWidget = ({ userId, picturePath }) => {
                             }}>
                                 {firstName} {lastName}
                                 <Typography color={medium}>
-                                    {friends.length} friends  |  {posts.length} posts
+                                    {friends.length} friends  &middot;  {posts.length} posts
                                 </Typography>
                         </Typography>
                     </Box>
@@ -129,7 +129,7 @@ const UserWidget = ({ userId, picturePath }) => {
                     </FlexBetween>
                     <FlexBetween>
                         <Typography color={medium}>
-                            Impressions of your post
+                            Impressions of your posts
                         </Typography>
                         <Typography color={main} fontWeight="500">
                             {impressions}
@@ -154,7 +154,7 @@ const UserWidget = ({ userId, picturePath }) => {
                                     Twitter
                                 </Typography>
                                 <Typography color={medium}>
-                                    @vkrenz
+                                    Social Network
                                 </Typography>
                             </Box>
                         </FlexBetween>
@@ -169,7 +169,7 @@ const UserWidget = ({ userId, picturePath }) => {
                                     Linkedin
                                 </Typography>
                                 <Typography color={medium}>
-                                    in/vkrenz
+                                    Network Platform
                                 </Typography>
                             </Box>
                         </FlexBetween>

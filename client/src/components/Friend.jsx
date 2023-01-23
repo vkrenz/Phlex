@@ -7,7 +7,7 @@ import FlexBetween from "./FlexBetween"
 import UserImage from "./UserImage"
 import { useEffect, useState } from "react"
 
-const Friend = ({ friendId, name, subtitle, userPicturePath, size = "55px", user }) => {
+const Friend = ({ friendId, name, userPicturePath, size = "55px", user }) => {
     const [friendOccupation, setFriendOccupation] = useState(null)
     const [friendLocation, setFriendLocation] = useState(null)
     const dispatch = useDispatch()
@@ -17,7 +17,6 @@ const Friend = ({ friendId, name, subtitle, userPicturePath, size = "55px", user
     const friends = useSelector((state) => state.user.friends)
     const { palette } = useTheme()
     const primaryLight = palette.primary.light
-    const primaryDark = palette.primary.dark
     const main = palette.neutral.main
     const medium = palette.neutral.medium
     
@@ -75,7 +74,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath, size = "55px", user
                             {name}
                         </Typography>
                         <Typography color={medium} fontSize="0.75rem">
-                            {friendOccupation && friendLocation ? `${friendOccupation}, ${friendLocation}` : "Loading..."}
+                            {friendOccupation && friendLocation ? `${friendOccupation} · ${friendLocation}` : "Loading..."}
                         </Typography>
                     </Box>
                 </FlexBetween>

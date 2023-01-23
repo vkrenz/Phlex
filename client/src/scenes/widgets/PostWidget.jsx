@@ -60,7 +60,7 @@ const PostWidget = ({
     const handleDelete = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:3001/posts/${postId}`, {
+            await fetch(`http://localhost:3001/posts/${postId}`, {
                 method: "DELETE",
                 headers: {Authorization: `Bearer ${token}`}
             })
@@ -73,6 +73,16 @@ const PostWidget = ({
 
     return (
         <WidgetWrapper m="2rem 0">
+            {postUserId !== user._id ? (
+                <Box>
+                    <Typography
+                        color="DimGray"
+                    >
+                        Suggested for you
+                    </Typography>
+                    <Divider sx={{ m: "1rem 0" }} />
+                </Box>
+            ) : null}
             {postUserId === user._id ? (
                 <Friend
                 friendId={user._id}

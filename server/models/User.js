@@ -27,7 +27,7 @@ const UserSchema = mongoose.Schema(
         },
         picturePath: {
             type: String,
-            default: ""
+            default: "https://img.freepik.com/free-icon/user_318-875902.jpg"
         },
         friends: {
             type: Array,
