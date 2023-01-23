@@ -159,12 +159,15 @@ const PostWidget = ({
                 <Box>
                     <Divider sx={{ m: "1rem 0" }} />
                     <Box display="flex" alignItems="center">
-                        <UserImage image={user.picturePath}/>
+                        <UserImage image={user.picturePath} size="40px" />
                         <TextField
                             label={`${user.firstName}, write a comment...`}
                             variant="filled"
                             fullWidth
                             sx={{
+                                "&:fieldset": {
+                                    borderRadius: "50%"
+                                },
                                 ml: "1rem"
                             }}
                         />
