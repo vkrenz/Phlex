@@ -20,7 +20,6 @@ import WidgetWrapper from "components/WidgetWrapper"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setPost } from "state"
-import { useNavigate } from "react-router-dom"
 import UserImage from "components/UserImage"
 
 const PostWidget = ({
@@ -40,7 +39,6 @@ const PostWidget = ({
     const loggedInUserId = useSelector((state) => state.user._id)
     const isLiked = Boolean(likes[loggedInUserId])
     const likeCount = Object.keys(likes).length
-    const navigate = useNavigate()
     const { palette } = useTheme()
     const main = palette.neutral.main
     const primary = palette.primary.main
@@ -58,16 +56,17 @@ const PostWidget = ({
         dispatch(setPost({ post: updatedPost }))
     }
 
-    const handleDelete = async () => {
+    const handleDelete = async (postId) => {
         try {
-            await fetch(`http://localhost:3001/posts/${postId}`, {
+            const response = await fetch(`http://localhost:3001/posts/${postId}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
                 }
             })
-            navigate("/home")
+            const data = await response.json()
+            console.log(data)
         } catch (err) {
             console.error(err)
         }

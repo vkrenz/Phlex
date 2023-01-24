@@ -16,6 +16,8 @@ import { useNavigate } from "react-router-dom"
 const UserWidget = ({ userId, picturePath }) => {
     const [user, setUser] = useState(null)
     const [posts, setPosts] = useState([])
+    const postsSelector = useSelector((state) => state.posts)
+    const friendsSelector = useSelector((state) => state.user.friends)
     const navigate = useNavigate()
     const token = useSelector((state) => state.token)
     const { palette } = useTheme()
@@ -28,7 +30,7 @@ const UserWidget = ({ userId, picturePath }) => {
             {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` }
-        })
+            })
         const data = await response.json()
         setUser(data)
     }
@@ -47,9 +49,13 @@ const UserWidget = ({ userId, picturePath }) => {
     
     useEffect(() => {
         getUser()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [friendsSelector])
+
+    useEffect(() => {
         getPosts()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [posts])
+    }, [postsSelector])
 
     if (!user) {
         return null

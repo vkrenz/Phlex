@@ -7,6 +7,7 @@ import PostWidget from "./PostWidget"
 const PostsWidget = ({ userId, isProfile = false }) => {
     const dispatch = useDispatch()
     // const [reversedPostsArr, setReversedPostsArr] = useState([])
+    const [userPosts, setUserPosts] = useState(null)
     const posts = useSelector((state) => state.posts)
     const token = useSelector((state) => state.token)
 
@@ -59,7 +60,36 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
     return (
         <>
-            {posts.map(
+            {posts.filter(post => post.userId === userId).slice(0, 3).map(
+                ({
+                    _id,
+                    userId,
+                    firstName,
+                    lastName,
+                    description,
+                    location,
+                    occupation,
+                    picturePath,
+                    userPicturePath,
+                    likes,
+                    comments
+                }) => (
+                    <PostWidget
+                        key={_id}
+                        postId={_id}
+                        postUserId={userId}
+                        name={`${firstName} ${lastName}`}
+                        description={description}
+                        location={location}
+                        occupation={occupation}
+                        picturePath={picturePath}
+                        userPicturePath={userPicturePath}
+                        likes={likes}
+                        comments={comments}
+                    />
+                )
+            )}
+            {posts.filter(post => post.userId !== userId).map(
                 ({
                     _id,
                     userId,
