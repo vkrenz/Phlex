@@ -42,6 +42,6 @@ A full-stack web application built using the MERN stack (MongoDB, Express.js, Re
 - Dark mode toggle
 - User likes & dislikes
 
-## Visual Data Model
+## <center>Visual Data Model</center>
 
 ![Entity Relationship Diagram](./Data_Model.png)
