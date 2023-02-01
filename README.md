@@ -2,6 +2,12 @@
 
 A full-stack web application built using the MERN stack (MongoDB, Express.js, React, and Node.js).
 
+# Screenshots
+
+![Login Page](./LoginPageScreenshot.jpg)
+
+![Home Page](./HomePageExampleScreenshot.jpg)
+
 ## Built With
 
 - [Material-UI](https://material-ui.com/) - A popular UI library for creating beautiful and responsive user interfaces
