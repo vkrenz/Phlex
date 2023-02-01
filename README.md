@@ -4,7 +4,11 @@ A full-stack web application built using the MERN stack (MongoDB, Express.js, Re
 
 # Screenshots
 
+## Login Page
+
 ![Login Page](./LoginPageScreenshot.jpg)
+
+## Home Page
 
 ![Home Page](./HomePageExampleScreenshot.jpg)
 
