@@ -2,6 +2,16 @@
 
 A full-stack web application built using the MERN stack (MongoDB, Express.js, React, and Node.js).
 
+# Screenshots
+
+## Login Page
+
+![Login Page](./LoginPageScreenshot.jpg)
+
+## Home Page
+
+![Home Page](./HomePageExampleScreenshot.jpg)
+
 ## Built With
 
 - [Material-UI](https://material-ui.com/) - A popular UI library for creating beautiful and responsive user interfaces
@@ -32,6 +42,6 @@ A full-stack web application built using the MERN stack (MongoDB, Express.js, Re
 - Dark mode toggle
 - User likes & dislikes
 
-## Visual Data Model
+## <center>Visual Data Model</center>
 
 ![Entity Relationship Diagram](./Data_Model.png)
