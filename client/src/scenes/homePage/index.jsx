@@ -5,6 +5,8 @@ import UserWidget from "scenes/widgets/UserWidget"
 import MyPostWidget from "scenes/widgets/MyPostWidget"
 import PostsWidget from "scenes/widgets/PostsWidget"
 import LinksWidget from "scenes/widgets/LinksWidget"
+import AdvertWidget from "scenes/widgets/AdvertWidget"
+import FriendListWidget from "scenes/widgets/FriendListWidget"
 
 const HomePage = () => {
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)")
@@ -33,7 +35,14 @@ const HomePage = () => {
                     <PostsWidget userId={_id} />
                 </Box>
                 {isNonMobileScreens && (
-                    <Box flexBasis="26%"></Box>
+                    <Box flexBasis="26%">
+                        <Box sx={{ position: "sticky", top: "3rem" }}>
+                            <AdvertWidget />
+                            <FriendListWidget 
+                                userId={_id}
+                            />
+                        </Box>
+                    </Box>
                 )}
             </Box>
         </Box>

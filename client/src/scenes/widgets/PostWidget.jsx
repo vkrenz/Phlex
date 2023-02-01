@@ -73,7 +73,7 @@ const PostWidget = ({
     }
 
     return (
-        <WidgetWrapper m="2rem 0">
+        <WidgetWrapper m="3rem 0">
             {postUserId !== user._id ? (
                 <Box>
                     <Typography
