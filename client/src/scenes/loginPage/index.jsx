@@ -38,7 +38,7 @@ const LoginPage = () => {
                         color="primary"
                     >
                         {/* Logo */}
-                        Sociopedia
+                        PHLEX.
                     </Typography> 
                     <IconButton
                         onClick={() => dispatch(setMode(/** Change state */))}
@@ -70,7 +70,7 @@ const LoginPage = () => {
                     textAlign="center"
                 >
                     {/* Description */}
-                    Welcome to Sociopedia, the Social Media for Sociopaths!
+                    Login In. Phlex off.
                 </Typography>
                 <Form />
             </Box>
