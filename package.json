@@ -15,12 +15,12 @@
   },
   "name": "server",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "type": "module",
   "devDependencies": {},
   "scripts": {
-    "start": "node server.js",
-    "test": "nodemon server.js"
+    "start": "node index.js",
+    "test": "nodemon index.js"
   },
   "keywords": [],
   "author": "Victor Krenzel",
