@@ -21,7 +21,7 @@ const AdvertWidget = () => {
             <img 
                 width="100%"
                 height="auto"
-                src="http://localhost:3001/assets/info4.jpeg" 
+                src="/assets/info4.jpeg" 
                 alt="Advert" 
                 style={{
                    borderRadius: "0.75rem",

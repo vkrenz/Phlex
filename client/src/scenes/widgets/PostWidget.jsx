@@ -44,7 +44,7 @@ const PostWidget = ({
     const primary = palette.primary.main
 
     const patchLike = async () => {
-        const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
+        const response = await fetch(`/posts/${postId}/like`, {
             method: "PATCH",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ const PostWidget = ({
 
     const handleDelete = async (postId) => {
         try {
-            const response = await fetch(`http://localhost:3001/posts/${postId}`, {
+            const response = await fetch(`/posts/${postId}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -108,7 +108,7 @@ const PostWidget = ({
                 height="auto"
                 alt="post"
                 style={{ borderRadius: "0.75rem", marginTop: "1rem" }}
-                src={`http://localhost:3001/assets/${picturePath}`}
+                src={`/assets/${picturePath}`}
             />
            )}
            <Divider sx={{ mt: "1rem" }} />

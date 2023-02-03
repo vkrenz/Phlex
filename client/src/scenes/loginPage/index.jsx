@@ -12,7 +12,6 @@ import {
 import { useDispatch } from "react-redux"
 import { setMode } from "state"
 import Form from "./Form"
-import FlexBetween from "components/FlexBetween"
 
 const LoginPage = () => {
     const theme = useTheme()

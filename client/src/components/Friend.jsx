@@ -23,7 +23,7 @@ const Friend = ({ friendId, name, userPicturePath, size = "55px", user }) => {
     const isFriend = friends.find((friend) => friend._id === friendId)
 
     const patchFriend = async () => {
-        const response = await fetch(`http://localhost:3001/users/${_id}/${friendId}`, {
+        const response = await fetch(`/users/${_id}/${friendId}`, {
             method: "PATCH",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -35,7 +35,7 @@ const Friend = ({ friendId, name, userPicturePath, size = "55px", user }) => {
     }
 
     const getFriend = async () => {
-        const response = await fetch(`http://localhost:3001/users/${friendId}`, {
+        const response = await fetch(`/users/${friendId}`, {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`}
         })

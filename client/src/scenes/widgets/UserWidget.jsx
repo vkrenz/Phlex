@@ -26,7 +26,7 @@ const UserWidget = ({ userId, picturePath }) => {
     const main = palette.neutral.main
 
     const getUser = async () => {
-        const response = await fetch(`http://localhost:3001/users/${userId}`,
+        const response = await fetch(`/users/${userId}`,
             {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` }
@@ -37,7 +37,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
     /** Get ONLY THE SPECIFIC USER'S posts */
     const getPosts = async () => {
-        const response = await fetch(`http://localhost:3001/posts/${userId}/posts`, {
+        const response = await fetch(`/posts/${userId}/posts`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}`}
         })
